@@ -16,3 +16,5 @@ if __name__=="__main__":
     nums=[64, 25, 12, 22, 11]
     s=Solution()
     print(s.selectionSort(nums))
+
+    # by ANSH
