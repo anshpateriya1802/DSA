@@ -1,57 +1,61 @@
 #include <bits/stdc++.h>
 using namespace std;
-class solution {
-    public:
-    vector<int> mergeSort(vector<int>& nums) {
-        int n = nums.size();
-        if(n<=1) return nums;
-        vector<int> left;   // left part of the array
-        vector<int> right;  // right part of the array
-        for(int i=0;i<n/2;i++){
-            left.push_back(nums[i]);
-        }
-        for(int i=n/2;i<n;i++){
-            right.push_back(nums[i]);
-        }
-        left = mergeSort(left);
-        right = mergeSort(right);
-        return merge(left,right);
+class Solution {
+public:
+    void mergeSortHelper(vector<int> &nums, int low ,int high){
+       // base case  if one element
+       if(low>=high) return ;
+       int mid = low + (high - low) / 2;
+       mergeSortHelper(nums,low,mid);
+       mergeSortHelper(nums,mid+1,high);
+       merge(nums,low,mid,high);
+
     }
-    vector<int> merge(vector<int>& left, vector<int>& right){
-        vector<int> ans;
-        int i=0;
-        int j=0;
-        while(i<left.size() && j<right.size()){
-            if(left[i]<right[j]){
-                ans.push_back(left[i]);
-                i++;
+
+    void merge(vector<int> &nums,int low ,int mid,int high){
+        // pointer on both
+        int left = low;
+        int right = mid+1;
+        vector<int> temp ;
+        while(left<=mid && right<=high){
+            if(nums[left]<=nums[right]) {
+                temp.push_back(nums[left]);
+                left++;
             }
             else{
-                ans.push_back(right[j]);
-                j++;
+                temp.push_back(nums[right]);
+                right++;
+            }}
+            // remaining element
+        while(left<=mid){
+                temp.push_back(nums[left]);
+                left++;
             }
-        }
-        while(i<left.size()){
-            ans.push_back(left[i]);
-            i++;
-        }
-        while(j<right.size()){
-            ans.push_back(right[j]);
-            j++;
-        }
-        return ans;
-    }
 
+        while(right<=high){
+                temp.push_back(nums[right]);
+                right++;
+            }
+            // tranfering;
+        for (int i = low; i <= high; i++) {
+            nums[i] = temp[i - low];
+            }
+    }
+    vector<int> mergeSort(vector<int>& nums) {
+        int n = nums.size();
+        mergeSortHelper(nums,0,n-1);
+        return nums;
+    }
 };
+
 int main() {
-    // merge sort
-    solution sol;
-    vector<int> nums = {5,2,3,1};
+    Solution sol;
+    vector<int> nums = {5, 2, 9, 1, 5, 6};
     vector<int> ans = sol.mergeSort(nums);
-    for(auto x: ans){
-        cout<<x<<" ";
+    for (int i = 0; i < ans.size(); i++) {
+        cout << ans[i] << " ";
     }
-
-
+    
+    
     return 0;
 }
