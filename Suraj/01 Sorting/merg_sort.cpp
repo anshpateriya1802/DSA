@@ -1,3 +1,5 @@
+#include <bits/stdc++.h>
+using namespace std;
 class Solution {
 public:
     void mergeSortHelper(vector<int> &nums, int low ,int high){
@@ -45,3 +47,15 @@ public:
         return nums;
     }
 };
+
+int main() {
+    Solution sol;
+    vector<int> nums = {5, 2, 9, 1, 5, 6};
+    vector<int> ans = sol.mergeSort(nums);
+    for (int i = 0; i < ans.size(); i++) {
+        cout << ans[i] << " ";
+    }
+    
+    
+    return 0;
+}
