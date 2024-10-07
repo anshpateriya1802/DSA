@@ -15,9 +15,41 @@ public:
     }
 };
 
+void printLinkedList(Node* head){
+    Node* temp = head ;
+    while (temp->next != nullptr)  
+    {
+        cout << temp->data << "->";
+        temp = temp->next;
+    }
+    cout << "nullptr" << endl;
+}
+
+
+Node*arrayToLinkedList(int arr[],int size){
+    if (size == 0) return nullptr;
+    Node* head = new Node(arr[0]);
+    Node* current = head ;
+
+    for (int i = 1; i < size; i++)
+    {
+        current->next = new Node(arr[i]);
+        current = current->next;
+    }
+    return head;
+}
+
+
+
+
 int main() {
-    vector<int> arr = {5, 2, 9, 1, 5, 6};
-    
+    int arr[] = {1, 2, 3, 4, 5};
+    int size = sizeof(arr) / sizeof(arr[0]);
+
+    Node* head = arrayToLinkedList(arr, size);
+
+    // Print the linked list
+    printLinkedList(head);
     
     return 0;
 }
