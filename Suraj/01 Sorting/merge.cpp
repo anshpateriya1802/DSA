@@ -5,10 +5,10 @@ void merge(int arr[], int low, int mid, int high) {
     int n1 = mid - low + 1;
     int n2 = high - mid;
     int left[n1], right[n2];
-        for (int i = 0; i < n1; i++) {
+    for(int i = 0; i < n1; i++) {
         left[i] = arr[low + i];
     }
-    for (int i = 0; i < n2; i++) {
+    for(int i = 0; i < n2; i++){
         right[i] = arr[mid + 1 + i];
     }
     
