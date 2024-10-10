@@ -1,3 +1,4 @@
+package java;
 class LinearSearch{
     public int LinearSearch(int[] nums,int target){
         
