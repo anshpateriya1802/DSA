@@ -15,6 +15,7 @@ class LinearSearch{
         LinearSearch sol=new LinearSearch();
         int result=sol.LinearSearch(nums, target);
         System.out.println(result);
+        System.out.println("Hello");
     }
 
 }
