@@ -10,7 +10,16 @@ int main()
     // v.push_back(3);
 
     
-    vector <int> :: iterator it=v.begin();
-    cout << *(it)<<endl;
+    vector <int> :: iterator it= v.end();
+    it--;
+    // cout << *(it)<<endl;
+    // cout<<v.back()<<endl;
+    for(auto it=v.begin();it!=v.end();it++){
+        cout<<*(it)<<endl;
+    }
+    // for(auto it:v){
+    //     cout<<it<<endl;
+    // }
+    // cout<<v[0];
     return 0;
 }
