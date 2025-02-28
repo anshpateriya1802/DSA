@@ -22,8 +22,8 @@ def printArray(nums):
 
 
 if __name__ == "__main__":
-    nums = [1, 2, 3, 4, 5, 6]
-    k = 8
+    nums = [1, 2, 3, 4, 5]
+    k = 4
 
     print("Initial array: ")
     printArray(nums)
