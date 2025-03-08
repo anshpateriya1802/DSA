@@ -44,6 +44,7 @@ int lengthOfLL(Node *head)
 
         temp = temp->next;
     }
+    cout<<endl;
     return count;
 }
 
@@ -109,6 +110,30 @@ Node *insertPosition(Node *head, int pos, int ele)
     return head;
 }
 
+Node* insertBefore(Node* head,int el,int x){
+    if(head==NULL){
+        return head;
+
+    }
+    if(head->data==el){
+        Node*temp=new Node(x,head);
+        return temp;
+    }
+    Node* temp=head;
+    while(temp!=NULL){
+    if(temp->next->data==el){
+        Node* check=new Node(x,temp->next);
+        temp->next=check;
+        break;
+
+    }
+    temp=temp->next;
+}
+return head;
+}
+
+
+
 Node *deleteHead(Node *head)
 {
     Node *temp = head;
@@ -164,6 +189,31 @@ Node *deletePosition(Node *head, int k)
     return head;
 }
 
+Node* deleteEle(Node* head,int el){
+    if(head==NULL){
+        return head;
+    }
+    if(head->data==el){
+        Node* temp=head;
+        head= head->next;
+        free(temp);
+        return head;
+    }
+    Node* temp=head;
+    Node* prev=NULL;
+    while(temp!=nullptr){
+        if(temp->data==el){
+            prev->next=prev->next->next;
+            delete temp;
+            break;
+
+        }
+        prev=temp;
+        temp=temp->next;
+    }
+    return head;
+}
+
 int main()
 {
     vector<int> arr = {12, 8, 3, 4};
@@ -172,7 +222,9 @@ int main()
     // head=deleteHead(head);
     // head=insertTail(20,head);
     // head=deleteTail(head);
-    head = insertPosition(head, 2, 11);
+    // head = insertPosition(head, 2, 11);
+    // head=deleteEle(head,4);
+    head=insertBefore(head,12,1);
 
     cout << lengthOfLL(head);
     // cout<<search(head,19);
