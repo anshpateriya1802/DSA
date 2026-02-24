@@ -2,7 +2,8 @@
 using namespace std;
 
 int main() {
-    int num = 4; 
-    cout <<(num & 1) << endl;
+    int x;
+    cin>>x; 
+    cout <<x+9 << endl;
     return 0;
 }
